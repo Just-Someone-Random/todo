@@ -1,0 +1,175 @@
+
+:root{
+  --primary-color:#1b1b2e;
+  --secondary-color:#3c3c50;
+  --tertiary-color:#90909c8e;
+  --theme:white;
+}
+
+*{
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+.lightmode{
+  --primary-color:#e2e2e2;
+  --secondary-color:#a3a3adf7;
+  --tertiary-color:#1b1b2e;
+  --theme:var(--tertiary-color);
+}
+
+body{
+  margin:0;
+  background-color: var(--primary-color);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+#background{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:30%;
+  background-image:url("folder/back.jpeg");
+  background-size:cover;
+  background-position:center;
+  z-index:-1;/* to ensure the background is behind other elements */
+}
+
+#tasks{
+  width:50%;
+  display:flex;
+  flex-direction:column;
+  
+  gap:15px;
+  /*flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  height:100vh;/* to make the container take full height of the viewport */
+}
+#header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  width:100%;
+}
+h1{
+  display:inline-block;
+  color:white;
+}
+
+#theme-btn{
+border:none;
+outline:none;
+width:40px;
+height:40px;
+border-radius:50%;
+background-color:var(--primary-color);
+display:flex;
+justify-content:center;
+align-items:center;
+cursor:pointer;
+z-index:1000;
+}
+
+#theme-btn svg{
+  fill:var(--theme);
+  display:block;
+}
+
+#theme-btn svg:last-child{
+  display:none;
+}
+
+.lightmode #theme-btn svg:first-child{
+  display:none;
+}
+.lightmode #theme-btn svg:last-child{
+  display:block;
+}
+
+
+#add-btn{
+  color:var(--theme);
+  background-color: var(--primary-color);
+  border:none;
+  cursor:pointer;
+  
+}
+
+  
+#addBar{
+  background-color:var(--secondary-color);
+  height:40px;
+  width:100%;
+  border-radius:10px;
+  display:flex;
+  justify-content:space-between;
+  overflow:hidden;/* to hide the border radius and ensures rounded corners look clean*/
+}
+
+input{
+  border:none;
+  flex:1;/* to make input take up available space */
+  padding: 10px 15px;
+  background-color:transparent;/* to make input background transparent */
+  outline:none;/* to remove the default outline */
+  color:var(--theme);
+  font:18px;
+}
+
+input::placeholder{
+  color:var(--tertiary-color);
+  opacity:0.8;/* to make placeholder text slightly transparent */
+  
+}
+
+input:focus{
+  outline:none;
+  box-shadow:rgba(0,0,0,0.3);
+}
+
+#footer{
+  background-color:var(--secondary-color);
+  height:40px;
+  width:100%;
+  display:flex;
+  justify-content:center;
+  border-radius:10px;
+}
+
+#list{
+  background-color:var(--secondary-color);
+  border-radius:10px;
+  color:var(--theme);
+  width:100%;
+  overflow:hidden;
+  }
+
+.task{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  height:40px;
+  width:100%;
+  padding:0 10px;
+  color:var(--theme);
+  box-sizing: border-box;/*to ensure padding is included in width*/
+  border-bottom:1px solid var(--tertiary-color);/* to add a border around each task */
+}
+.task:last-child{
+  border-bottom:none;/* to remove the border from the last task */
+}
+#list button ,#footer button{
+  background-color:transparent;
+  border:none;
+  color:var(--tertiary-color);
+  cursor:pointer;
+  padding:5px 10px;
+  margin:1px;
+}  
+
+#all,#active,#completed:hover{
+  color:electricblue;
+}
