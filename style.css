@@ -138,6 +138,14 @@ input:focus{
   justify-content:center;
   border-radius:10px;
 }
+#footer-text{
+  color:var(--tertiary-color);
+  font-size:16px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:100%;
+}
 
 #list{
   background-color:var(--secondary-color);
@@ -170,6 +178,6 @@ input:focus{
   margin:1px;
 }  
 
-#all,#active,#completed:hover{
-  color:electricblue;
-}
+
+
+
