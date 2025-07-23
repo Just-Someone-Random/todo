@@ -15,7 +15,7 @@ add.addEventListener('click',()=>
   const div=document.createElement('div');
   div.textContent=input.value;
   div.classList.add("task");
-
+  div.setAttribute('draggable',"true");
   const btn=document.createElement('div');
   const delet=document.createElement('button');
   delet.textContent="Clear";
@@ -50,10 +50,9 @@ themeBtn.addEventListener('click',()=>{
 });
 
 complete.addEventListener('click',()=>{
-  complete.style.color="#7DF9FF";
-  all.style.color="";
-  active.style.color="";
-  const allTasks=document.querySelectorAll('.task');
+  if(complete.style.color==="")
+  {complete.style.color="#7DF9FF";
+    const allTasks=document.querySelectorAll('.task');
   allTasks.forEach(task=>{
     task.style.display='none';/* to hide all tasks */
   });
@@ -61,10 +60,24 @@ complete.addEventListener('click',()=>{
   tasks.forEach(task=>{
     task.style.display='flex';
   });
+}
+  else
+ {complete.style.color="";
+  const allTasks=document.querySelectorAll('.task');
+  allTasks.forEach(task=>{
+    task.style.display='flex';
+  });
+}
+  all.style.color="";
+  active.style.color="";
+  
 });
 
 all.addEventListener('click',()=>{
+  if(all.style.color==="")
   all.style.color="#7DF9FF";
+  else
+  all.style.color="";
   complete.style.color="";
   active.style.color="";
   const allTasks=document.querySelectorAll('.task');
@@ -74,9 +87,8 @@ all.addEventListener('click',()=>{
 });
 
 active.addEventListener('click',()=>{
-  active.style.color="#7DF9FF";
-  all.style.color="";
-  complete.style.color="";
+  if(active.style.color==="")
+  {active.style.color="#7DF9FF";
   const allTasks=document.querySelectorAll('.task');
   
   allTasks.forEach(task => {
@@ -86,8 +98,46 @@ active.addEventListener('click',()=>{
       task.style.display = 'flex'; 
     }
   });
+}
+  else
+  {
+    active.style.color="";
+    const allTasks=document.querySelectorAll('.task');
+  
+  allTasks.forEach(task => {
+    task.style.display = 'flex';
+  });
+  }
+  all.style.color="";
+  complete.style.color="";
 });
 
+
+//dragging and dropping tasks
+
+let container=document.getElementById('list');
+let selected=null;
+container.addEventListener('dragstart',(e)=>{
+  if(e.target.classList.contains('task'))
+    selected=e.target;
+});
+
+container.addEventListener('dragover',(e)=>{
+  e.preventDefault();
+});
+
+container.addEventListener('dragend',(e)=>{
+  selected=null;
+});
+
+container.addEventListener('drop',(e)=>{
+  e.preventDefault();
+  if(selected && selected!== e.target && e.target.classList.contains('task')) 
+    container.insertBefore(selected, e.target.nextSibling);
+  else
+  container.appendChild(selected);
+  selected=null;
+});
 
   
 
