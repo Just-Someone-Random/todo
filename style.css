@@ -1,4 +1,6 @@
-
+button{
+  outline:none;
+}
 :root{
   --primary-color:#1b1b2e;
   --secondary-color:#3c3c50;
